@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>멋쟁이사자처럼::아기사자 이은정 - EduSystem</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1> 👔 교사 목록 </h1>
+<p>
+    🏠<a href="/">홈으로</a> >
+    ®️<a href="/teachers/add">교사 등록</a>
+</p>
+<table>
+    <thead>
+    <tr>
+        <td>아이디</td>
+        <td>이름</td>
+        <td>액션</td>
+    </tr>
+    </thead>
+    <tbody th:each="teacher: ${teachers}">
+    <tr>
+        <td th:text="${teacher.id}"></td>
+        <td th:text="${teacher.name}"></td>
+        <td>
+            <a th:href="@{'/teachers/edit/' + ${teacher.id}}" class="btn">수정</a>
+            <a th:href="@{'/teachers/delete/' + ${teacher.id}}" class="btn">삭제</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
