@@ -49,4 +49,11 @@ public class TeacherController {
 
         return "redirect:/teachers";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@ModelAttribute Teacher teacher) {
+        teacherRepository.delete(teacher);
+
+        return "redirect:/teachers";
+    }
 }

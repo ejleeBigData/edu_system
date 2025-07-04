@@ -38,4 +38,10 @@ public class TeacherRepository {
                 "UPDATE teacher SET name = ? WHERE id = ?", teacher.getName(), teacher.getId()
         );
     }
+
+    public int delete(Teacher teacher) {
+        return jdbcTemplate.update(
+                "DELETE FROM teacher WHERE ID = ?", teacher.getId()
+        );
+    }
 }
