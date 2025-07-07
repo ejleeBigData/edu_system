@@ -51,8 +51,17 @@ public class TeacherController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@ModelAttribute Teacher teacher) {
-        teacherRepository.delete(teacher);
+    public String delete(@PathVariable int id) {
+        try{
+            int affected = teacherRepository.deleteById(id);
+
+            if (affected == 0) {
+                System.out.println("해당 교사를 찾을 수 없습니다.");
+            }
+        } catch(Exception e) {
+            //model.addAttribute("error", "교사 삭제 에러 발생:" + e.getMessage());
+            System.out.println(e.getMessage());
+        }
 
         return "redirect:/teachers";
     }

@@ -20,7 +20,7 @@ public class TeacherRepository {
                     .build();
 
     public List<Teacher> findAll() {
-        return jdbcTemplate.query("SELECT * FROM teacher ORDER BY name", mapper );
+        return jdbcTemplate.query("SELECT * FROM teacher ORDER BY name", mapper);
     }
 
     public Teacher findById(int id) {
@@ -39,9 +39,10 @@ public class TeacherRepository {
         );
     }
 
-    public int delete(Teacher teacher) {
+    public int deleteById(int id) {
         return jdbcTemplate.update(
-                "DELETE FROM teacher WHERE ID = ?", teacher.getId()
+                "DELETE FROM teacher WHERE ID = ?", id
         );
     }
+
 }
